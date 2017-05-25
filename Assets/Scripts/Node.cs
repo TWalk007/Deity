@@ -29,7 +29,7 @@ public class Node : MonoBehaviour {
         startColor = rend.material.color;
     }
 
-    void OnMouseEnter()
+    void OnMouseOver()
     {
         rend.material.color = hoverColor;
     }
@@ -37,13 +37,5 @@ public class Node : MonoBehaviour {
     void OnMouseExit()
     {
         rend.material.color = startColor;
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Wall")
-        {
-            Debug.Log(col.gameObject.name);
-        }
     }
 }
