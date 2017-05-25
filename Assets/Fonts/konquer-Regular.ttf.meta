@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0845cc07177966147bc78a3e23b1cb95
+timeCreated: 1495388072
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: konquer
+  fontNames:
+  - konquer
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

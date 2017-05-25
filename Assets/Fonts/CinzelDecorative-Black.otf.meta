@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 1df6d3ff824392a45981a1ea8590aa55
+timeCreated: 1495388105
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cinzel Decorative
+  fontNames:
+  - Cinzel Decorative
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0c4ed7c16d2332a498c8e0968c65254f, type: 3}
+  - {fileID: 12800000, guid: 0e2f304b8476397488e22178876997ec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
