@@ -13,18 +13,65 @@ public class BuildManager : MonoBehaviour
 
     public bool isNodeClearOfWall = true;
 
+    private bool canBuild = false;
+    private bool _building = false;
+
+    public GameObject _currentNode;
     public GameObject _selectedTower;
     public Vector3 _towerPos;
 
     private Transform[] nodes;
     private Transform[] walls;
 
-    private void Start()
+    private Collider _nodeCollider;
+
+    void Start()
     {
         nodes = NodeMaster.nodes;
         walls = WallMaster.walls;
 
         AltarNodeClear();
+    }
+
+    void Update()
+    {
+        if (_building)
+        {
+            OnTriggerEnter(_nodeCollider);
+        }
+
+    }
+
+    public void BuildTower()
+    {
+        _nodeCollider = _currentNode.GetComponent<Collider>();
+        _building = true;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        canBuild = other.transform.gameObject.GetComponent<Node>().occupied;
+        //Debug.Log("Detected Node");
+        if (other.transform.gameObject.tag == "Node")
+        {
+            
+            if (canBuild)
+            {
+                Debug.Log("Detected Node");
+                PlaceSelectedTower();
+                BuildToggle();
+            }
+            else
+            {
+                Debug.Log("Node is already occupied!");
+            }
+        }
+    }
+
+    void BuildToggle()
+    {
+        canBuild = false;
+        other.transform.gameObject.GetComponent<Node>().occupied = canBuild;
     }
 
     void AltarNodeClear()
@@ -41,7 +88,7 @@ public class BuildManager : MonoBehaviour
         }
     }
 
-    public void PlaceSelectedTower()
+    void PlaceSelectedTower()
     {
        GameObject _tower = (GameObject) GameObject.Instantiate (_selectedTower, _towerPos, Quaternion.identity) as GameObject;
     }

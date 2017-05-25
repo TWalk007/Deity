@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Node
   - Wall
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Ground_Floor
   - Player
   - Altar
-  - 
+  - Tower
   - 
   - 
   - 
