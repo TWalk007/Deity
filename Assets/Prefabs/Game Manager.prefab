@@ -68,8 +68,6 @@ MonoBehaviour:
   wallMaster: {fileID: 0}
   altarNodeTolerance: 2
   wallNodeTolerance: 0.25
-  xMin: 0
-  xMax: 0
-  zMin: 0
-  zMax: 0
   isNodeClearOfWall: 1
+  _selectedTower: {fileID: 1187299707252902, guid: ca4e0523a066e7e4e857b33a040f5f7c,
+    type: 2}

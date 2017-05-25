@@ -15,6 +15,8 @@ public class Node : MonoBehaviour {
     private float zMin;
     private float zMax;
 
+    private bool _canBuild = false;
+
 
      void Start()
     {
@@ -37,5 +39,19 @@ public class Node : MonoBehaviour {
     void OnMouseExit()
     {
         rend.material.color = startColor;
+    }
+
+    private void OnMouseUp()
+    {
+        //TODO: Add code later to check if there is something already there too.
+        //TODO: Add code to check if there is enough money to build here.
+        _canBuild = buildManager.isNodeClearOfWall;
+
+        if (_canBuild)
+        {
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
+            buildManager._towerPos = newPos;
+            buildManager.PlaceSelectedTower();
+        }
     }
 }
