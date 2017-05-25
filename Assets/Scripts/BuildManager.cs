@@ -11,6 +11,13 @@ public class BuildManager : MonoBehaviour
     public float altarNodeTolerance = 2f;
     public float wallNodeTolerance = 0.25f;
 
+    public float xMin;
+    public float xMax;
+    public float zMin;
+    public float zMax;
+
+    public bool isNodeClearOfWall = true;
+
     private Transform[] nodes;
     private Transform[] walls;
 
@@ -35,4 +42,28 @@ public class BuildManager : MonoBehaviour
             }
         }
     }
+
+    //public void NodeWallClearanceCheck()
+    //{
+
+    //    Debug.Log(walls[0].gameObject.name);
+        //for (int i = 0; i < walls.Length; i++)
+        //{
+        //    Wall wall;
+        //    wall = walls[i].GetComponent<Wall>();
+
+        //    Debug.Log("wall.xMin = " + wall.xMin);
+        //    float wallXMin = wall.xMin;
+        //    float wallXMax = wall.xMax;
+        //    float wallZMin = wall.zMin;
+        //    float wallZMax = wall.zMax;
+
+        //    if ((xMin > wallXMin) && (xMax < wallXMax) &&
+        //        (zMin > wallZMin) && (zMax < wallZMax))
+        //    {
+        //        isNodeClearOfWall = false;
+        //        Debug.Log("isNodeClearOfWall  = " + isNodeClearOfWall);
+        //    }
+        //}   
+    //}
 }

@@ -32,16 +32,18 @@ public class Node : MonoBehaviour {
     void OnMouseEnter()
     {
         rend.material.color = hoverColor;
-        CanBuildOnNode();
     }
+
     void OnMouseExit()
     {
         rend.material.color = startColor;
     }
 
-    public void CanBuildOnNode()
+    void OnCollisionEnter(Collision col)
     {
-
-        
+        if (col.gameObject.tag == "Wall")
+        {
+            Debug.Log(col.gameObject.name);
+        }
     }
 }
