@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public Altar altar;
-    public NodeMaster nodeMaster;
-    public WallMaster wallMaster;
-
-    public float altarNodeTolerance = 2f;
-    public float wallNodeTolerance = 0.25f;
-
-    public bool isNodeClearOfWall = true;
-
-    private bool canBuild = false;
-    private bool _building = false;
-
     public GameObject _currentNode;
     public GameObject _selectedTower;
+    public Altar altar;
+    public float altarNodeTolerance = 2f;
+    public float wallNodeTolerance = 0.25f;
     public Vector3 _towerPos;
+    public bool isNodeClearOfWall = true;
+    public bool _building = false;
 
+    private NodeMaster nodeMaster;
+    private WallMaster wallMaster;
+    private Collider _nodeCollider;    
     private Transform[] nodes;
     private Transform[] walls;
 
-    private Collider _nodeCollider;
-
     void Start()
     {
+        nodeMaster = FindObjectOfType<NodeMaster>();
+        wallMaster = FindObjectOfType<WallMaster>();
+
         nodes = NodeMaster.nodes;
         walls = WallMaster.walls;
 
@@ -37,41 +34,38 @@ public class BuildManager : MonoBehaviour
     {
         if (_building)
         {
-            OnTriggerEnter(_nodeCollider);
+            BuildTower();
         }
 
     }
 
     public void BuildTower()
     {
+        _building = false;
         _nodeCollider = _currentNode.GetComponent<Collider>();
-        _building = true;
+        OnTriggerEnter(_nodeCollider);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        canBuild = other.transform.gameObject.GetComponent<Node>().occupied;
-        //Debug.Log("Detected Node");
-        if (other.transform.gameObject.tag == "Node")
+        bool occupied;
+        occupied = _currentNode.GetComponent<Node>().occupied;
+
+        if (occupied)
         {
-            
-            if (canBuild)
-            {
-                Debug.Log("Detected Node");
-                PlaceSelectedTower();
-                BuildToggle();
-            }
-            else
-            {
-                Debug.Log("Node is already occupied!");
-            }
+            Debug.Log("Current node is already occupied!");
+        }
+        else if (!occupied)
+        {
+            Debug.Log("Detected Node");
+            PlaceSelectedTower();
+            BuildToggle();
         }
     }
 
     void BuildToggle()
     {
-        canBuild = false;
-        other.transform.gameObject.GetComponent<Node>().occupied = canBuild;
+        _currentNode.GetComponent<Node>().occupied = true;
     }
 
     void AltarNodeClear()

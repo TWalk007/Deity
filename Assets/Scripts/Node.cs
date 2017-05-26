@@ -49,8 +49,6 @@ public class Node : MonoBehaviour {
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
         buildManager._towerPos = newPos;
 
-        buildManager.BuildTower();
-
-
+        buildManager._building = true;
     }
 }
