@@ -13,17 +13,12 @@ public class BuildManager : MonoBehaviour
     public bool isNodeClearOfWall = true;
     public bool _building = false;
 
-    private NodeMaster nodeMaster;
-    private WallMaster wallMaster;
     private Collider _nodeCollider;    
     private Transform[] nodes;
     private Transform[] walls;
 
     void Start()
     {
-        nodeMaster = FindObjectOfType<NodeMaster>();
-        wallMaster = FindObjectOfType<WallMaster>();
-
         nodes = NodeMaster.nodes;
         walls = WallMaster.walls;
 
@@ -39,14 +34,35 @@ public class BuildManager : MonoBehaviour
 
     }
 
-    public void BuildTower()
+    void PrintArrayNames (Transform[] arr)
+    {
+        foreach (Transform item in arr)
+        {
+            print("Transform[] index name: " + item.gameObject.name);
+        }
+    }
+
+    void WallCheck()
+    {
+        //PrintArrayNames(walls);  // This DID print all of the wall GameObjects in the scene.
+        Collider towerCol = _selectedTower.GetComponent<Collider>();
+        for (int i = 0; i < walls.Length; i++)
+        {
+            //walls[i].GetComponent<Wall>().OnTriggerEnter(towerCol);
+            //Wall _wallScript = walls[i].GetComponent<Wall>();
+            //_wallScript.OnTriggerEnter(towerCol);
+        }
+    }
+
+    void BuildTower()
     {
         _building = false;
+        WallCheck();
         _nodeCollider = _currentNode.GetComponent<Collider>();
         OnTriggerEnter(_nodeCollider);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider col)
     {
         bool occupied;
         occupied = _currentNode.GetComponent<Node>().occupied;
@@ -57,7 +73,7 @@ public class BuildManager : MonoBehaviour
         }
         else if (!occupied)
         {
-            Debug.Log("Detected Node");
+            //Debug.Log("Detected Node");
             PlaceSelectedTower();
             BuildToggle();
         }
@@ -84,6 +100,6 @@ public class BuildManager : MonoBehaviour
 
     void PlaceSelectedTower()
     {
-       GameObject _tower = (GameObject) GameObject.Instantiate (_selectedTower, _towerPos, Quaternion.identity) as GameObject;
+       Instantiate (_selectedTower, _towerPos, Quaternion.identity);
     }
 }
