@@ -14,13 +14,4 @@ public class Wall : MonoBehaviour {
         zMin = transform.position.z - transform.localScale.z / 2;
         zMax = transform.position.z + transform.localScale.z / 2;
     }
-
-    public void OnTriggerEnter(Collider col)
-    {
-        Debug.Log(col.gameObject.name);
-        if (col.gameObject.tag == "Tower")
-        {
-            Debug.Log("You cannot place a tower in the wall!");
-        }
-    }
 }

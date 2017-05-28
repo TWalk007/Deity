@@ -32,7 +32,6 @@ public class Node : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        //TODO: Add code later to check if there is something already there too.
         //TODO: Add code to check if there is enough money to build here.
         buildManager._currentNode = this.gameObject;
 
