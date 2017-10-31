@@ -6,7 +6,7 @@ public class NodeMaster : MonoBehaviour {
 
     void Awake()
     {
-        nodes = new Transform[transform.childCount];
+        var nodes = new Transform[transform.childCount];
         for (int i = 0; i < nodes.Length; i++)
         {
             nodes[i] = transform.GetChild(i);
